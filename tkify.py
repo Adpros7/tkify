@@ -3,10 +3,11 @@ import tkinter as tk
 
 
 class TKInput:
-    def __init__(self) -> None:
+    def __init__(self, runCheck=True) -> None:
         self.entries = []
         self.root = tk.Tk()
-        self.tkUseCheck()
+        self.root.geometry("500x500")
+        self.tkUseCheck() if runCheck else None
 
     def tkinput(self, prompt):
         self.entries.append(tk.Entry(self.root, name=prompt))
@@ -19,9 +20,9 @@ class TKInput:
             return
 
         else:
-            print("replacing input() with tkinput(). You will need to restart the program.")
+            print("replacing tkinput() with tkinput(). You will need to restart the program.")
             with open(__file__, "w") as f:
-                f.write(cur.replace("input(", "tkinput("))
+                f.write(cur.replace("tkinput(", "tkinput("))
 
             sys.exit()
 
@@ -33,6 +34,6 @@ class TKInput:
 
 
 if __name__ == "__main__":
-    inp = TKInput()
+    inp = TKInput(False)
     inp.tkinput("test")
     inp.render()
