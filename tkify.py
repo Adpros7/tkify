@@ -6,11 +6,11 @@ class TKInput:
     def __init__(self, runCheck=True) -> None:
         self.entries = []
         self.root = tk.Tk()
-        self.root.geometry("500x500")
+        self.root.geometry("1000x1000")
         self.tkUseCheck() if runCheck else None
 
     def tkinput(self, prompt):
-        self.entries.append(tk.Entry(self.root, name=prompt))
+        self.entries.append(tk.Entry(self.root, textvariable=tk.StringVar(self.root, prompt)))
 
     def tkUseCheck(self):
         with open(__file__, "r") as f:
@@ -36,4 +36,7 @@ class TKInput:
 if __name__ == "__main__":
     inp = TKInput(False)
     inp.tkinput("test")
+    inp.tkinput("test2")
+    inp.tkinput("test3")
+    inp.tkinput("test4")
     inp.render()
