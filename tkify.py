@@ -3,10 +3,10 @@ import tkinter as tk
 
 
 class TKInput:
-    def __init__(self, runCheck=True) -> None:
+    def __init__(self, runCheck=True, windowSize=(1000, 1000)) -> None:
         self.entries = []
         self.root = tk.Tk()
-        self.root.geometry("1000x1000")
+        self.root.geometry(f"{windowSize[0]}x{windowSize[1]}")
         self.tkUseCheck() if runCheck else None
 
     def tkinput(self, prompt):
